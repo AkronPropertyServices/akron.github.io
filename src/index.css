@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1a0000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #800000;
+  border-radius: 10px;
+  border: 2px solid #1a0000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #800000 #1a0000;
+}
+
+.animate-container {
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.animate-appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.horse-logo {
+  opacity: 0.3;
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.horse-animation {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: run 1s infinite linear;
+}
+
+@keyframes run {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.popup-content {
+  border: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInDown {
+  animation-name: fadeInDown;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}

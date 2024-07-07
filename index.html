@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akron Property Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@1,300"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500&family=Outfit:wght@400;600;700&family=Raleway:wght@300;400&family=Roboto+Mono"
+      rel="stylesheet"
+    />
+
+    <script defer src="test.js"></script>
+
+    <!-- https://stackoverflow.com/a/54115910/19612884 -->
+    <svg viewBox="0 0 1000 1000" style="display: none">
+      <defs>
+        <filter
+          id="neon-glow"
+          filterUnits="userSpaceOnUse"
+          x="-50%"
+          y="-50%"
+          width="200%"
+          height="200%"
+        >
+          <!-- blur the text at different levels -->
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur5" />
+          <feGaussianBlur
+            in="SourceGraphic"
+            stdDeviation="10"
+            result="blur10"
+          />
+          <feGaussianBlur
+            in="SourceGraphic"
+            stdDeviation="20"
+            result="blur20"
+          />
+          <feGaussianBlur
+            in="SourceGraphic"
+            stdDeviation="30"
+            result="blur30"
+          />
+          <feGaussianBlur
+            in="SourceGraphic"
+            stdDeviation="50"
+            result="blur50"
+          />
+          <!-- merge all the blurs except for the first one -->
+          <feMerge result="blur-merged">
+            <feMergeNode in="blur10" />
+            <feMergeNode in="blur20" />
+            <feMergeNode in="blur30" />
+            <feMergeNode in="blur50" />
+          </feMerge>
+          <!-- recolor the merged blurs with a neon color -->
+          <feColorMatrix
+            result="neon-blur"
+            in="blur-merged"
+            type="matrix"
+            values="0.25 0 0 0 0
+                                 0 0.95 0 0 0
+                                 0 0 1 0 0
+                                 0 0 0 1 0"
+          />
+          <feMerge>
+            <feMergeNode in="neon-blur" />
+            <!-- largest blurs colored neon -->
+            <feMergeNode in="blur5" />
+            <!-- smallest blur left white -->
+            <feMergeNode in="SourceGraphic" />
+            <!-- original white text -->
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
+  </head>
+
+  <body>
+    <div id="loading" style="z-index: -20; position: fixed">
+      <div class="bg-black">
+        <div
+          class="loading-screen fixed inset-0 flex items-center justify-center bg-black"
+        >
+          <div
+            class="horse-animation"
+            style="background-image: url(&quot;./Logo.svg&quot;)"
+          ></div>
+        </div>
+        <div class="fixed inset-0 flex items-center justify-center text-white">
+          <p id="loading-text" class="font-mono text-6xl">Loading.</p>
+        </div>
+      </div>
+
+      <script>
+        let dots = 1;
+
+        setInterval(function () {
+          dots = (dots % 3) + 1;
+          let el = document.getElementById("loading-text");
+          if (!el) return;
+          el.innerHTML = `Loading${".".repeat(dots)}`;
+        }, 350);
+      </script>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
