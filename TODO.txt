@@ -1,7 +1,0 @@
-Fix contact
-Maybe remove parallax and manually add them
-Remove unused packages using:
-`npm install -g depcheck
-depcheck`
-add proper favicon
-check licenses of the packages used(Some might be paid packages)
